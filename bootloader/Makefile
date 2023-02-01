@@ -11,3 +11,6 @@ build:
 $(BUILD_DIR)/%.o: %.asm build
 	nasm -f bin $< -o $@
 
+clean: build
+	rm $(BUILD_DIR)/*
+
