@@ -1,43 +1,15 @@
-bits 16
+ORG 0x500
+SECTION .text
+jmp init
 
-%define ENDL 0x0D, 0x0A
-%define ENDS 0x00
+init:
+    mov si, msg
+    call print_string
+    hlt
 
-start:
-    jmp main
+%include "io.asm"
 
-printstr:
-    push si
-    push ax
-
-.loop:
-    lodsb
-    or al, al
-    jz .done
-    mov ah, 0Eh
-    mov bh, 0
-    int 10h
-    
-jmp .loop
-
-.done:
-    pop ax
-    pop si
-    
-    ret
-
-cls:
-    pusha
-    mov al, 0x03
-    mov ah, 0x00
-    int 0x10
-    popa
-    ret
-
-main:
-    call cls
-    mov si, string
-    call printstr
-
-string: db "Hello world!", ENDL, ENDS
+SECTION .data
+    msg: db "[STAGE2]: Loading OS...",  0x0, 0x0D, 0x0A
+    times 512 - ($-$$) db 0x3F
 
