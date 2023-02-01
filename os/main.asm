@@ -7,9 +7,9 @@ init:
     call print_string
     hlt
 
-%include "io.asm"
+%include "../utils/io.asm"
 
 SECTION .data
-    msg: db "[STAGE2]: Loading OS...",  0x0, 0x0D, 0x0A
+    msg: db "[STAGE2]: Hello world...",  0x0, 0x0D, 0x0A
     times 512 - ($-$$) db 0x3F
 

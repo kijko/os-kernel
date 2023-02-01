@@ -70,7 +70,7 @@ msg: db "[STAGE1]: Welcome to HamdoOS!", 0x0A, 0x0D, 0x0
 fail_msg: db "Failed to read disk", 0x0A, 0x0D, 0x0
 bootloader_load_addr: equ 0x050
 
-%include "io.asm"
+%include "../utils/io.asm"
 
 ; The bootloader has to be 512 byets. Clear the rest of
 ; the bytes with 0
