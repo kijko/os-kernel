@@ -5,7 +5,7 @@
 bits 16                            ; 16-bit mode
                                    ; After loading the boot sector into memory the BIOS sets the IP register to 0x7C00 and sets the CS register to 0x0 (or just 0).
                                    ; Together this memory address looks like 0x0:0x7C00. https://web.archive.org/web/20130119004022/http://supernovah.com/Tutorials/BootSector2.php
-org 0x7C00                         ; Starting address (set by the linker script)
+;org 0x7C00                         ; Starting address (set by the linker script)
 
 ; The trick is, if we specify a segment, even if it is 0x0, the jmp will be a far jump
 ; and the CS register will be loaded with the value 0x0 and the IP register will be loaded
