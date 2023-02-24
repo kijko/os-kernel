@@ -51,7 +51,7 @@ init:
     call load_stage_two
     jc print_fail                ; Jump if CF is set (error) ( return value from interrupt )
 
-    jmp 0x500   ; Free memory range:  500 - 9FBFF (Load stage 2)
+    jmp [500h + 18h]   ; Free memory range:  500 - 9FBFF (Load stage 2)
 
 print_fail:
     mov si, fail_msg
